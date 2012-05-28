@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<canvas id="myCanvas" width="205" height="105" style="border:1px solid #0094ff;">
+    Your browser does not support the canvas element.
+</canvas>
+<script type="text/javascript">
+    var c = document.getElementById("myCanvas");
+    var cxt = c.getContext("2d");
+    var img = new Image();
+    img.addEventListener('load', eventLoaded, false);
+    img.src = "ct_html5_canvas_image.gif";
+
+    function eventLoaded()
+    {
+        cxt.drawImage(img, 0, 0);
+    }
+</script>
+</body>
+</html>

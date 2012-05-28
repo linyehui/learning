@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    if (localStorage.pagecount)
+    {
+        localStorage.pagecount = Number(localStorage.pagecount) + 1;
+    }
+    else
+    {
+        localStorage.pagecount = 1;
+    }
+
+    document.write("Visits: " + localStorage.pagecount + " time(s).");
+</script>
+
+<p>刷新页面会看到计数器在增长。</p>
+<p>请关闭浏览器窗口，然后再试一次，计数器会继续计数。</p>
+</body>
+</html>

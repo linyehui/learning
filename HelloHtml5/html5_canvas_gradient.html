@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #0094ff;">
+    Your browser does not support the canvas element.
+</canvas>
+<script type="text/javascript">
+    var c = document.getElementById("myCanvas");
+    var cxt = c.getContext("2d");
+    var grd = cxt.createLinearGradient(0, 0, 175, 50);
+    grd.addColorStop(0, "#FF6655");
+    grd.addColorStop(1, "#66FF33");
+    cxt.fillStyle = grd;
+    cxt.fillRect(0, 0, 175, 50);
+</script>
+</body>
+</html>
