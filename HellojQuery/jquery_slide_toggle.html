@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="./jquery/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".flip").click(function () {
+                $(".panel").slideToggle("slow");
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        div.panel, p.flip {
+        margin:0px;
+        padding:5px;
+        text-align:center;
+        background:#e5eecc;
+        border:solid 1px #c3c3c3;
+        }
+
+        div.panel {
+        height:120px;
+        display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="panel">
+<p>W3School - 领先的 Web 技术教程站点</p>
+<p>在 W3School，你可以找到你所需要的所有网站建设教程。</p>  
+</div>
+<p class="flip">Pls click me</p>
+</body>
+</html>
