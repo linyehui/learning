@@ -95,12 +95,13 @@
     function clickBtnDownload() {
         // Assign the URI to download from.
         var uriExample = new Windows.Foundation.Uri("http://www.microsoft.com");
+        var progressDiv = document.getElementById("divProgress");
 
         // Get the folder for temporary files.
         var tempFolder = Windows.Storage.ApplicationData.current.temporaryFolder;
 
         // Create the temp file asynchronously.
-        tempFolder.createFileAsync("tempfile.txt")
+        tempFolder.createFileAsync("tempfile.txt", Windows.Storage.CreationCollisionOption.ReplaceExisting)
            .then(function (tempFile) {
                // The createFileAsync call succeeded, so start the download operation.
                var downloader = new Windows.Networking.BackgroundTransfer.BackgroundDownloader();
@@ -111,14 +112,17 @@
                //Define the function to use when the download completes successfully
                function (result) {
                    console.log("File download complete.");
+                   progressDiv.innerText += "\nFile download complete.";
                },
                // Define the error handling function.
                function (error) {
                    console.log("File download failed.");
+                   progressDiv.innerText += "\nFile download failed.";
                },
                // Define the progress handling function.
                function (progress, resultSoFar) {
                    console.log("Bytes retrieved: " + progress.bytesReceived);
+                   progressDiv.innerText = "Bytes retrieved: " + progress.progress.bytesReceived;
                });
 
     }
