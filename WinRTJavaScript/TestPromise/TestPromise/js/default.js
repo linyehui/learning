@@ -20,6 +20,7 @@
         }
 
         //document.addEventListener("DOMContentLoaded", contentLoadedHandler);
+        document.getElementById("btnDownload").addEventListener("click", clickBtnDownload, false);
     };
 
     app.oncheckpoint = function (args) {
@@ -40,17 +41,25 @@
     function activatedHandler() {
         var input = document.getElementById("inUrl");
         input.addEventListener("change", changeHandler);
+        WinJS.Promise.onerror = errorHandler
     }
 
+    // ver 1.0
     function changeHandler(e) {
         var input = e.target;
         var resDiv = document.getElementById("divResult");
+        var twoDiv = document.getElementById("div2");
 
-        WinJS.xhr({ url: e.target.value }).then(
-            function fulfilled(result) {
+        WinJS.xhr({ url: e.target.value })
+            .then(function (result) {
                 if (result.status === 200) {
                     resDiv.style.backgroundColor = "lightGreen";
                     resDiv.innerText = "Success";
+                }
+            })
+            .then(function (result) {
+                if (result.status === 200) {
+                    twoDiv.style.backgroundColor = "yellow";
                 }
             },
             function error(e) {
@@ -66,6 +75,52 @@
                     resDiv.innerText = "Error";
                 }
             });
+    }
+
+    /* ver 2.0 for test error
+    function changeHandler(e) {
+        var input = e.target;
+        var resDiv = document.getElementById("divResult");
+        var twoDiv = document.getElementById("div2");
+
+        WinJS.xhr({ url: e.target.value });
+    }
+    */
+
+    function errorHandler(event) {
+        var ex = event.detail.exception;
+        var promise = event.detail.promise;
+    }
+
+    function clickBtnDownload() {
+        // Assign the URI to download from.
+        var uriExample = new Windows.Foundation.Uri("http://www.microsoft.com");
+
+        // Get the folder for temporary files.
+        var tempFolder = Windows.Storage.ApplicationData.current.temporaryFolder;
+
+        // Create the temp file asynchronously.
+        tempFolder.createFileAsync("tempfile.txt")
+           .then(function (tempFile) {
+               // The createFileAsync call succeeded, so start the download operation.
+               var downloader = new Windows.Networking.BackgroundTransfer.BackgroundDownloader();
+               var transfer = downloader.createDownload(uriExample, tempFile);
+               return transfer.startAsync();
+           })
+           .then(
+               //Define the function to use when the download completes successfully
+               function (result) {
+                   console.log("File download complete.");
+               },
+               // Define the error handling function.
+               function (error) {
+                   console.log("File download failed.");
+               },
+               // Define the progress handling function.
+               function (progress, resultSoFar) {
+                   console.log("Bytes retrieved: " + progress.bytesReceived);
+               });
+
     }
 
     document.addEventListener("DOMContentLoaded", contentLoadedHandler, false);
