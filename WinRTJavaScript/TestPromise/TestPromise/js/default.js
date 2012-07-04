@@ -58,8 +58,10 @@
                 }
             })
             .then(function (result) {
-                if (result.status === 200) {
-                    twoDiv.style.backgroundColor = "yellow";
+                if (null != result) {
+                    if (result.status === 200) {
+                        twoDiv.style.backgroundColor = "yellow";
+                    }
                 }
             },
             function error(e) {
