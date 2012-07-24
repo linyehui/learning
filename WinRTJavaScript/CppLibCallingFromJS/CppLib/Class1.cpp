@@ -58,6 +58,76 @@ bool Class1::is_prime(int n)
 	return true;
 }
 
+IVector<int>^ Class1::SortVector(IVector<int>^ vec)
+{
+	std::sort(begin(vec), end(vec));
+	return vec;
+}
+
+WFC::IVector<int>^ Class1::getData()
+{
+	WFC::IVector<int>^ data = ref new Platform::Collections::Vector<int>();
+	data->Append(10);
+	data->Append(20);
+	data->Append(26);
+
+	return data;
+}
+
+WFC::IVector<Folder^>^ Class1::getFolderData()
+{
+	WFC::IVector<Folder^>^ data = ref new Platform::Collections::Vector<Folder^>();
+	Folder^ item1 = ref new Folder();
+	item1->Name = L"Item1";
+	data->Append(item1);
+
+	Folder^ item2 = ref new Folder();
+	item2->Name = L"Item2";
+	data->Append(item2);
+
+	Folder^ item3 = ref new Folder();
+	item3->Name = L"Item3";
+	data->Append(item3);
+
+	return data;
+}
+
+WFC::IVector<Platform::Object^>^ Class1::getObjectData()
+{
+	WFC::IVector<Platform::Object^>^ data = ref new Platform::Collections::Vector<Platform::Object^>();
+	Folder^ item1 = ref new Folder();
+	item1->Name = L"Item1";
+	data->Append(item1);
+
+	Folder^ item2 = ref new Folder();
+	item2->Name = L"Item2";
+	data->Append(item2);
+
+	Folder^ item3 = ref new Folder();
+	item3->Name = L"Item3";
+	data->Append(item3);
+
+	return data;
+}
+
+WFC::IObservableVector<Platform::Object^>^ Class1::getObservableData()
+{
+	WFC::IObservableVector<Platform::Object^>^ data = ref new Platform::Collections::Vector<Platform::Object^>();
+	Folder^ item1 = ref new Folder();
+	item1->Name = L"Item1";
+	data->Append(item1);
+
+	Folder^ item2 = ref new Folder();
+	item2->Name = L"Item2";
+	data->Append(item2);
+
+	Folder^ item3 = ref new Folder();
+	item3->Name = L"Item3";
+	data->Append(item3);
+
+	return data;
+}
+
 // This method computes all primes, orders them, then returns the ordered results.
 IAsyncOperationWithProgress<IVector<int>^, double>^ Class1::GetPrimesOrdered(int first, int last)
 {
