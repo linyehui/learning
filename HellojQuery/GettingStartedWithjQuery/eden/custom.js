@@ -1,5 +1,4 @@
 ﻿$(document).ready(function() {
-	$("#reset").click(function() {
-		$("form")[0].reset();
-	});
+	//$("li").not(":has(ul)").css("border", "1px solid red");
+    $("a[name]").css("background-color", "#000");
 });
