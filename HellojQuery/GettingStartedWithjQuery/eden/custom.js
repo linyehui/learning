@@ -1,7 +1,13 @@
 ﻿$(document).ready(function () {
-    $("a").hover(function () {
-        $(this).parents("p").addClass("highlight");
+    $("a").toggle(function () {
+        $(".stuff").animate({
+            height: 'hide',
+            opacity: 'hide'
+        }, 'slow');
     }, function () {
-        $(this).parents("p").removeClass("highlight");
+        $(".stuff").animate({
+            height: 'show',
+            opacity: 'show'
+        }, 'slow');
     });
 });
