@@ -33,6 +33,24 @@
 })();
 
 var nativeObject = new CppLib.Class1();
+//var enumobj = CppLib.LOGIN_RESULT_OK;
+//var enumobj = nativeObject.enumooxx.LOGIN_RESULT_OK;
+//var nativeObject2 = new CppLib.Class2();
+//var nativeObject3 = CppLib.Class2.GetInstance();
+
+// It's work
+//var obj3 = new CppLib.Class3();
+//var obj2 = obj3.getInstance();
+
+var inVector = [14, 12, 45, 89, 23];
+var vecResult = nativeObject.sortVector(inVector);
+
+var data1 = nativeObject.getData();
+var data2 = nativeObject.getFolderData();
+var data3 = nativeObject.getObjectData();
+var data4 = nativeObject.getObservableData();
+
+var obj2 = CppLib.Class2.getInstance();
 
 function LogButton_Click() {
 
