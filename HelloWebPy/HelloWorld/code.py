@@ -1,9 +1,11 @@
 __author__ = 'edenlin'
 import web
+import blog
 
 render = web.template.render('templates/')
 
 urls = (
+    "/blog", blog.app_blog,
     '/(.*)', 'index'
 )
 
